@@ -1,0 +1,6 @@
+{
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^0.13.0",
+        "laravel/installer": "^2.0"
+    }
+}
