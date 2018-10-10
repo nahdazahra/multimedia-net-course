@@ -1,0 +1,7 @@
+{
+    "require": {
+        "laravel/laravel": "^5.7",
+        "php-ffmpeg/php-ffmpeg": "dev-master",
+        "pbmedia/laravel-ffmpeg": "^3.0"
+    }
+}
