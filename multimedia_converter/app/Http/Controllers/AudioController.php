@@ -16,12 +16,13 @@ class AudioController extends Controller
 		$milliseconds = round(microtime(true) * 1000); //get time in ms
 		$bitrate = ($request->bitrate ? " -ab ".$request->bitrate : ""); //if user use bitrate to convert the audio
 		$sample_rate = ($request->sample_rate ? " -ar ".$request->sample_rate : ""); //if user use sample_rate to convert the audio
-		$channel = ($request->channel ? " -ac ".$request->channel : ""); //if user use channel (mono or stereo) to convert the video
+		$channel = ($request->channel ? " -ac ".$request->channel : ""); //if user use channel (mono or stereo) to convert the audio
 		$file = $request->file('audio'); //get name of audio to $file
-    	$nama = $time.'_'.$file->getClientOriginalName(); //name file that used to store in /uploads/original
+		$nama = $time.'_'.$file->getClientOriginalName(); //name file that used to store in /uploads/original
+		$fileFormat = $request->formatAudio;
     	$destinationPath = 'uploads/original'; //define destination path
 		$destinationConvert = 'uploads/convert'; //define destination convert
-		$nama_output = $time.'_'.explode(".", $file->getClientOriginalName())[0].".".$request->output_audio; //name file that used to store in /uploads/convert
+		$nama_output = $time.'_'.explode(".", $file->getClientOriginalName())[0].".".$request->formatAudio; //name file that used to store in /uploads/convert
 		//convert audio with paramater that given by user
 		$command = "ffmpeg -i ".public_path()."/".$destinationPath."/".$nama.$bitrate." ".$sample_rate.$channel." -y ".public_path()."/".$destinationConvert."/".$nama_output;
 		if($file->move($destinationPath,$nama)) //get file in /uploads/original

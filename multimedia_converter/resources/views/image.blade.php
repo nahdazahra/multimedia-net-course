@@ -73,7 +73,7 @@
             <div class="form-group"> 
               <label>Pilih Format</label> 
               
-            <select class="form-control" name="format_image">
+            <select class="form-control" name="formatImage">
               <option disabled selected value><b>-- Pilih Menu Dibawah --</b></option>
               <option value="bmp">bmp</option>
               <option value="jpg">jpg</option>

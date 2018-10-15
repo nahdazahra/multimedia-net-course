@@ -19,7 +19,7 @@ class ImageController extends Controller
     	$takes = explode(".", $take); //separate name of image with "."
     	
     	$nama = $time."_".$file->getClientOriginalName(); //name file that used to store in /uploads/original
-    	$nama_baru = $time."_".$takes[0].".".$request->format_image; //name file that used to store in /uploads/convert
+    	$nama_baru = $time."_".$takes[0].".".$request->formatImage; //name file that used to store in /uploads/convert
     	$destinationPath = 'uploads/original'; //define destination path
     	$destinationConvert = 'uploads/convert'; //define destination convert
     	if ($file->move($destinationPath,$nama)) { //get file in /uploads/original

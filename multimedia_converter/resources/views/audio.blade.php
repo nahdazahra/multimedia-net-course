@@ -74,7 +74,7 @@
               <div class="col-md-6 col-xs-12">
                 <div class="form-group"> 
                   <label>Pilih Format</label>    
-                  <select required class="form-control" name="output_audio">
+                  <select required class="form-control" name="formatAudio">
                     <option selected value><b>-- Pilih Format Output --</b></option>
                     <option value="mp3" >mp3</option>
                     <option value="flac" >flac</option>

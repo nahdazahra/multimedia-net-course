@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreVideoRequest;
-use App\Jobs\ConvertVideoForDownloading;
-use App\Jobs\ConvertVideoForStreaming;
-use App\Video;
+use Illuminate\Http\Request;
+use FFMpeg;
 
 class VideoController extends Controller
 {
@@ -13,7 +11,7 @@ class VideoController extends Controller
        return view('video');
     }
 
-    public function store(StoreVideoRequest $request){
+    public function store(Request $request){
         //get value from user input
     	$height = $request->height;
     	$width = $request->width;
@@ -32,7 +30,7 @@ class VideoController extends Controller
     	$nama_baru = $time."_".$takes[0].".".$request->formatVideo; //name file that used to store in /uploads/convert
     	$destinationPath = 'uploads/original'; //define destination path
     	$destinationConvert = 'uploads/convert'; //define destination convert
-    	$execString = "ffmpeg -i /home/fourirakbar/Videos/". $take
+    	$execString = "ffmpeg -i /home/zahra/Videos/". $take
 	    		." -ac ". $audioChannel
 	    		." -r ". $frameRate
 	    		." -s ". $width. "x". $height 
@@ -46,9 +44,7 @@ class VideoController extends Controller
                 if ($file->move($destinationPath,$nama))
         { //get file in /uploads/original
         //execute $execString
-	    	exec($execString,
-	    		$output, 
-	    		$status);
+	    	exec($execString, $output, $status);
 	    	$millisecondsend = round(microtime(true) * 1000); //get time in ms after process convert
 			$hasil = (float)$millisecondsend - $milliseconds; //difference beetween get time in ms before process and git time in ms after process convert 
 		
